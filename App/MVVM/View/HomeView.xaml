@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="App.MVVM.View.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:App.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel VerticalAlignment="Center"
+                    Margin="60">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+
+                <Image Source="../../Images/UberRoutes.png" Width="100"/>
+
+                <TextBlock Text="Uber Routes"
+                       Foreground="White"
+                       FontSize="20"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Bottom"
+                       FontWeight="Medium"
+                       FontFamily="Fonts/#Ubuntu-Regular"
+                           Margin="0,0,0,5"/>
+                
+            </StackPanel>
+
+            <TextBlock Text="Viajando"
+                       Foreground="White"
+                       FontSize="25"
+                       FontWeight="Medium"
+                       FontFamily="Fonts/#Ubuntu-Regular"/>
+
+            <TextBlock Text="Por El"
+                       Foreground="White"
+                       FontSize="25"
+                       FontWeight="Medium"
+                       FontFamily="Fonts/#Ubuntu-Regular"/>
+
+            <TextBlock Text="Mundo"
+                       Foreground="White"
+                       FontSize="25"
+                       FontWeight="Medium"
+                       FontFamily="Fonts/#Ubuntu-Regular"/>
+
+            <TextBlock Text="Uber Routes es Un sitio dedicado unica y exlusivamente a compartir y descubrir nuevas rutas al aire libre para realizarlas y disfrutar con las mismas"
+                       TextWrapping="Wrap"
+                       Foreground="White"
+                       FontSize="12"
+                       FontWeight="Medium"
+                       FontFamily="Fonts/#Ubuntu-Regular"
+                       Margin="0,10,0,0"/>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,15,0,0"/>
+
+        </StackPanel>
+
+        <Grid Grid.Column="1"
+              Grid.RowSpan="2"
+              Margin="160,-365,-610,85"
+              Panel.ZIndex="-1">
+
+            <Grid.RenderTransform>
+                <RotateTransform Angle="50"/>
+            </Grid.RenderTransform>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="-350,250,-255,-250">
+                <StackPanel>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#99E2B4"
+                            Margin="150,0,0,0"
+                            CornerRadius="20"/>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#248277"
+                            Margin="0,15,0,0"
+                            CornerRadius="20"/>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#358F80"
+                            Margin="75,15,0,0"
+                            CornerRadius="20"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#99E2B4"
+                            Margin="150,0,0,0"
+                            CornerRadius="20"/>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#248277"
+                            Margin="0,15,0,0"
+                            CornerRadius="20"/>
+                    <Border Width="700"
+                            Height="35"
+                            Background="#358F80"
+                            Margin="75,15,0,0"
+                            CornerRadius="20"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
