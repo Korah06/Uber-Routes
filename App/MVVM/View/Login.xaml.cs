@@ -26,7 +26,7 @@ namespace App.MVVM.View
         {
             InitializeComponent();
 
-            ejemplo.getUsers();
+            ejemplo.GetUsers();
             
         }
 
@@ -86,6 +86,10 @@ namespace App.MVVM.View
 
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            Register registro = new Register();
+
+            registro.Show();
+            this.Close();
 
         }
     }

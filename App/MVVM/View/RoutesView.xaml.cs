@@ -26,7 +26,6 @@ namespace App.MVVM.View
         {
             InitializeComponent();
 
-            //makePage();
             makePageGrid();
         }
 
@@ -71,6 +70,7 @@ namespace App.MVVM.View
                 Text = "Description"
             };
             Grid.SetRow(descriptionText, 1);
+
             Grid.SetColumn(descriptionText, 1);
             postGrid.Children.Add(descriptionText);
 
@@ -107,31 +107,5 @@ namespace App.MVVM.View
 
         }
 
-
-        private void makePage()
-        {
-            TextBlock myTextBlock = new TextBlock();
-            myTextBlock.TextWrapping = TextWrapping.Wrap;
-            myTextBlock.Margin = new Thickness(0, 0, 0, 20);
-            myTextBlock.Foreground = Brushes.White;
-            myTextBlock.Padding = new Thickness(0, 0, 0, 500);
-            myTextBlock.Text = "Scrolling is enabled when it is necessary. Resize the Window, making it larger and smaller.";
-            TextBlock myTextBlock2 = new TextBlock();
-            myTextBlock2.TextWrapping = TextWrapping.Wrap;
-            myTextBlock2.Margin = new Thickness(0, 0, 0, 20);
-            myTextBlock2.Foreground = Brushes.White;
-            myTextBlock2.Padding = new Thickness(0, 0, 0, 500);
-            myTextBlock2.Text = "Scrolling is enabled when it is necessary. Resize the Window, making it larger and smaller.";
-            TextBlock myTextBlock3 = new TextBlock();
-            myTextBlock3.TextWrapping = TextWrapping.Wrap;
-            myTextBlock3.Margin = new Thickness(0, 0, 0, 20);
-            myTextBlock3.Foreground = Brushes.White;
-            myTextBlock3.Padding = new Thickness(0, 0, 0, 500);
-            myTextBlock3.Text = "Scrolling is enabled when it is necessary. Resize the Window, making it larger and smaller.";
-
-            //mainStack.Children.Add(myTextBlock);
-            //mainStack.Children.Add(myTextBlock2);
-            //mainStack.Children.Add(myTextBlock3);
-        }
     }
 }

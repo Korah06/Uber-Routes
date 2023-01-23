@@ -32,13 +32,16 @@ namespace App
 
             if (txtEmail.Text == "" || txtName.Text == "" || txtPassword.Password == "" || txtSurname.Text == "" || txtUser.Text == "")
             {
-
+                MessageBox.Show("Rellene todos los campos");
             }
             else
             {
                 if (Regex.IsMatch(txtEmail.Text, pattern))
                 {
-                    MessageBox.Show("La dirección de correo electrónico es válida");
+                    MainWindow main = new MainWindow();
+
+                    this.Close();
+                    main.Show();
                 }
                 else
                 {
@@ -47,6 +50,8 @@ namespace App
 
 
                 }
+
+
             }
 
             
