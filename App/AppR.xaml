@@ -41,6 +41,26 @@
                 <view:User/>
 
             </DataTemplate>
+            
+            <!--PARTE ADMINISTRACION-->
+
+            <DataTemplate DataType="{x:Type viewModel:AdministrativeViewModel}">
+
+                <view:AdministrativeView/>
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AdmUserViewModel}">
+
+                <view:AdmUser/>
+
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:AdmRouteViewModel}">
+
+                <view:AdmRoute/>
+
+            </DataTemplate>
 
         </ResourceDictionary>
     </Application.Resources>

@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using App.MVVM.Model;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -22,19 +23,26 @@ namespace App.MVVM.View
     {
 
         DataProvider ejemplo = new DataProvider();
+        List<MVVM.Model.User> users;
+
+        public async void saveUsers(){
+
+
+           await ejemplo.GetUsers().ContinueWith(task =>
+           {
+               users = task.Result;
+           });
+
+            MessageBox.Show(users[0].name);
+        }
+
         public Login()
         {
             InitializeComponent();
-
-            ejemplo.GetUsers();
+            saveUsers();
             
         }
 
-
-
-
-        
-        
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -46,12 +54,28 @@ namespace App.MVVM.View
                 main.Show();
             }
 
-            if(txtUser.Text == "" && txtPassword.Password == "")
+            var userFound = users.Where(x => x.email == txtUser.Text && x.username == txtPassword.Password);
+
+            if (userFound.Count() > 0)
             {
+                
                 MainWindow main = new MainWindow();
                 main.Administration.Visibility = Visibility.Hidden;
                 this.Close();
                 main.Show();
+            }
+            else
+            {
+                userFound = users.Where(x => x.email == txtUser.Text);
+
+                if(userFound.Count() > 0)
+                {
+                    MessageBox.Show("La contraseña no es correcta");
+                }
+                else
+                {
+                    MessageBox.Show("El usuario no existe");
+                }
 
 
             }
@@ -90,6 +114,11 @@ namespace App.MVVM.View
 
             registro.Show();
             this.Close();
+
+        }
+
+        private void TextBlock_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
 
         }
     }

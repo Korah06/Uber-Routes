@@ -20,13 +20,17 @@
     <Border Background="#036666"
             CornerRadius="20">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="879*"/>
+                <ColumnDefinition Width="401*"/>
+            </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" Grid.ColumnSpan="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
@@ -71,13 +75,13 @@
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding RouteMapViewCommand}"
                                  />
-                    
+
                     <RadioButton x:Name="Administration" Content="Administration"
                                  Height="50"
                                  Foreground="White"
                                  FontSize="14"
                                  Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding RouteMapViewCommand}"
+                                 Command="{Binding AdministrativeViewCommand}"
                                  
                                  />
 
@@ -169,9 +173,9 @@
 
 
             <ContentControl x:Name="content" Grid.Row="1" 
-                            Margin="10"
+                            Margin="10,10,10,10"
                             Content="{Binding CurrentView}"
-                            Panel.ZIndex="-1"/>
+                            Panel.ZIndex="-1" Grid.ColumnSpan="2"/>
 
 
         </Grid>

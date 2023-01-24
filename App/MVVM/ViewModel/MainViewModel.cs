@@ -11,12 +11,14 @@ namespace App.MVVM.ViewModel
     {
 
         public RelayCommand HomeViewCommand { get; set; }
+        public RelayCommand AdministrativeViewCommand { get; set; }
         public RelayCommand RoutesViewCommand { get; set; }
         public RelayCommand RouteMapViewCommand { get; set; }
         public RelayCommand UserViewCommand { get; set; }
 
 
         public HomeViewModel HomeVM { get; set; }
+        public AdministrativeViewModel AdministrativeVM { get; set; }
         public UserViewModel UserVM { get; set; }
         public RoutesViewModel RoutesVM { get; set; }
         public RouteMapViewModel RouteMapVM { get; set; }
@@ -39,6 +41,7 @@ namespace App.MVVM.ViewModel
             RoutesVM = new RoutesViewModel();
             RouteMapVM = new RouteMapViewModel();
             UserVM = new UserViewModel();
+            AdministrativeVM = new AdministrativeViewModel();
             CurrentView = HomeVM;
 
             HomeViewCommand = new RelayCommand(o =>
@@ -59,6 +62,10 @@ namespace App.MVVM.ViewModel
             UserViewCommand = new RelayCommand(o =>
             {
                 CurrentView = UserVM;
+            });
+            AdministrativeViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = AdministrativeVM;
             });
         }
     }

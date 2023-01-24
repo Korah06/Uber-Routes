@@ -134,7 +134,7 @@
                         Orientation="Vertical"
                         Margin="0,95,0,0">
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Image Width="50" Source="../../Images/UberRoutes.png"></Image>
 
                     <TextBlock Text="UBER ROUTES"
@@ -148,7 +148,7 @@
 
                 
 
-                <TextBlock Text="The way of hope by Lorem ipsum lolo"
+                <TextBlock Text="Rutas para salir y disfrutar"
                            Foreground="LightGray"
                            FontSize="16"
                            FontWeight="Medium"
@@ -261,7 +261,14 @@
 
                 </StackPanel>
 
-
+                <TextBlock Text="¿Has olvidado la contraseña?"
+                           Foreground="White"
+                           FontSize="12"
+                           FontWeight="Medium"
+                           FontFamily="Montserrat"
+                           Cursor="Hand"
+                           Margin="0,4,0,0"
+                           HorizontalAlignment="Center" MouseDown="TextBlock_MouseDown_1"/>
 
             </StackPanel>
         </Grid>

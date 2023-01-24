@@ -118,7 +118,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\DataProvider.cs" />
+    <Compile Include="MVVM\Model\Coment.cs" />
+    <Compile Include="MVVM\Model\Route.cs" />
     <Compile Include="MVVM\Model\User.cs" />
+    <Compile Include="MVVM\ViewModel\AdministrativeViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\AdmRouteViewModel.cs" />
+    <Compile Include="MVVM\ViewModel\AdmUserViewModel.cs" />
+    <Compile Include="MVVM\View\AdministrativeView.xaml.cs">
+      <DependentUpon>AdministrativeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\AdmRoute.xaml.cs">
+      <DependentUpon>AdmRoute.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\View\AdmUser.xaml.cs">
+      <DependentUpon>AdmUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\View\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -136,6 +150,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\View\AdministrativeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\AdmRoute.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\View\AdmUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\View\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
