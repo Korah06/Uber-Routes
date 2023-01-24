@@ -1,4 +1,5 @@
 ﻿using App.MVVM.View;
+using App.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using App.MVVM.Model;
 using System.Windows.Shapes;
+using App.Core;
+using User = App.MVVM.Model.User;
 
 namespace App
 {
@@ -21,6 +25,7 @@ namespace App
     /// </summary>
     public partial class MainWindow : Window
     {
+        User usuario = UserProvider.userLogged;
         public MainWindow()
         {
             InitializeComponent();
@@ -46,6 +51,8 @@ namespace App
 
         private void userBtn_Click(object sender, RoutedEventArgs e)
         {
+            //userBtn.SetBinding()
+
             radioCreate.IsChecked = false;
             radioHome.IsChecked = false;
             radioRoutes.IsChecked = false;

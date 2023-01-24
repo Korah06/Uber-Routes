@@ -32,8 +32,6 @@ namespace App.MVVM.View
            {
                users = task.Result;
            });
-
-            MessageBox.Show(users[0].name);
         }
 
         public Login()
@@ -54,10 +52,14 @@ namespace App.MVVM.View
                 main.Show();
             }
 
-            var userFound = users.Where(x => x.email == txtUser.Text && x.username == txtPassword.Password);
+            var userFound = users.Where(x => x._id == txtUser.Text && x.correo == txtPassword.Password);
 
             if (userFound.Count() > 0)
             {
+
+                var user = userFound.First();
+
+                UserProvider.userLogged = user;
                 
                 MainWindow main = new MainWindow();
                 main.Administration.Visibility = Visibility.Hidden;
@@ -66,7 +68,7 @@ namespace App.MVVM.View
             }
             else
             {
-                userFound = users.Where(x => x.email == txtUser.Text);
+                userFound = users.Where(x => x._id == txtUser.Text);
 
                 if(userFound.Count() > 0)
                 {

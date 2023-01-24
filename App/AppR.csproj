@@ -118,9 +118,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\DataProvider.cs" />
+    <Compile Include="Core\UserProvider.cs" />
     <Compile Include="MVVM\Model\Coment.cs" />
     <Compile Include="MVVM\Model\Route.cs" />
     <Compile Include="MVVM\Model\User.cs" />
+    <Compile Include="MVVM\Model\UserResponse.cs" />
     <Compile Include="MVVM\ViewModel\AdministrativeViewModel.cs" />
     <Compile Include="MVVM\ViewModel\AdmRouteViewModel.cs" />
     <Compile Include="MVVM\ViewModel\AdmUserViewModel.cs" />
@@ -178,11 +180,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\User.xaml">
+    <Page Include="MVVM\View\Register.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MVVM\View\Register.xaml">
+    <Page Include="MVVM\View\UserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,8 +216,8 @@
     <Compile Include="MVVM\View\RoutesView.xaml.cs">
       <DependentUpon>RoutesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MVVM\View\User.xaml.cs">
-      <DependentUpon>User.xaml</DependentUpon>
+    <Compile Include="MVVM\View\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

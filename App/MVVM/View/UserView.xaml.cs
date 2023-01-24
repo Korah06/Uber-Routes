@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App.Core;
+using App.MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +18,22 @@ using System.Windows.Shapes;
 namespace App.MVVM.View
 {
     /// <summary>
-    /// Lógica de interacción para User.xaml
+    /// Lógica de interacción para UserView.xaml
     /// </summary>
-    public partial class User : UserControl
+    public partial class UserView : UserControl
     {
-        public User()
+        User usuario;
+        public UserView()
         {
+            usuario = UserProvider.userLogged;
             InitializeComponent();
+            generateView();
+        }
+
+        private void generateView()
+        {
+            Console.WriteLine(usuario._id);
+            UsernameTxt.Text = ""+ usuario._id;
         }
     }
 }

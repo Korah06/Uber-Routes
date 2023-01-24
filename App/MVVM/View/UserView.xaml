@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="App.MVVM.View.User"
+﻿<UserControl x:Class="App.MVVM.View.UserView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -25,6 +25,7 @@
                    Source="../../Images/user.png" 
                    VerticalAlignment="Top"/>
             <TextBlock Text="User"
+                       x:Name="UsernameTxt"
                        Foreground="White"
                        FontSize="25"
                        FontWeight="Medium"
@@ -39,7 +40,7 @@
                        FontWeight="Medium"
                        Margin="10,15,0,0"
                        FontFamily="Fonts/#Ubuntu-Regular"/>
-            
+
             <StackPanel Orientation="Horizontal">
                 <StackPanel Orientation="Vertical" Margin="15">
 
@@ -128,7 +129,7 @@
                 </StackPanel>
 
             </StackPanel>
-            
+
         </StackPanel>
 
         <TextBlock Grid.Row="2" Text="Valoraciones"

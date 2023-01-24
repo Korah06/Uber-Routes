@@ -38,7 +38,7 @@
 
             <DataTemplate DataType="{x:Type viewModel:UserViewModel}">
 
-                <view:User/>
+                <view:UserView/>
 
             </DataTemplate>
             

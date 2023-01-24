@@ -32,13 +32,15 @@ namespace App.Core
                 //var result = await response.Content.ReadAsStringAsync();
                 //var users = JsonConvert.DeserializeObject<List<User>>(result);
 
-                client.BaseAddress = new Uri("https://jsonplaceholder.typicode.com");
+                client.BaseAddress = new Uri("http://localhost:3505");
 
                 var response = await client.GetAsync("/users");
                 var result = await response.Content.ReadAsStringAsync();
-                var users = JsonConvert.DeserializeObject<List<User>>(result);
 
-                return users;
+                var users = JsonConvert.DeserializeObject<UserResponse>(result);
+
+
+                return users.data;
             }
             catch(Exception e)
             {
