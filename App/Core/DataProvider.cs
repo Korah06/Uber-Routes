@@ -17,9 +17,9 @@ namespace App.Core
     {
         private HttpClient client = new HttpClient();
 
-        public async Task<List<User>> GetUsers()
+        public async Task<User> GetUsers(String username)
         {
-            
+
             try
             {
 
@@ -32,21 +32,17 @@ namespace App.Core
                 //var result = await response.Content.ReadAsStringAsync();
                 //var users = JsonConvert.DeserializeObject<List<User>>(result);
 
-                client.BaseAddress = new Uri("http://localhost:3505");
 
-                var response = await client.GetAsync("/users");
-                var result = await response.Content.ReadAsStringAsync();
+                string responseBody = await client.GetStringAsync($"http://localhost:9999/users/{username}");
+                UserResponse result = JsonConvert.DeserializeObject<UserResponse>(responseBody);
+                return result.data;
 
-                var users = JsonConvert.DeserializeObject<UserResponse>(result);
-
-
-                return users.data;
             }
             catch(Exception e)
             {
                 MessageBox.Show("No tiene conexión con el servidor","Error de Conexión", MessageBoxButton.OK,MessageBoxImage.Error,MessageBoxResult.None);
 
-                return new List<User>();
+                return new User();
             };
 
             

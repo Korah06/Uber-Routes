@@ -9,14 +9,14 @@ namespace App.MVVM.Model
     public  class User
     {
         public string _id { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string correo { get; set; }
+        public string name { get; set; }
+        public string surname { get; set; }
+        public string email { get; set; }
         public string password { get; set; }
-        public List<string> amigos { get; set; }
-        public List<string> seguidores { get; set; }
+        public List<string> friends { get; set; }
+        public List<string> followers { get; set; }
         public string picture { get; set; }
-        public string registro { get; set; }
+        public string register { get; set; }
         public string web { get; set; }
 
 

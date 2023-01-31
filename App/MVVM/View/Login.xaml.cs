@@ -13,6 +13,9 @@ using System.Windows.Media;
 using App.MVVM.Model;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
+using Application = System.Windows.Application;
 
 namespace App.MVVM.View
 {
@@ -23,26 +26,22 @@ namespace App.MVVM.View
     {
 
         DataProvider ejemplo = new DataProvider();
-        List<MVVM.Model.User> users;
+        MVVM.Model.User user;
 
-        public async void saveUsers(){
-
-
-           await ejemplo.GetUsers().ContinueWith(task =>
-           {
-               users = task.Result;
-           });
-        }
+        
 
         public Login()
         {
             InitializeComponent();
-            saveUsers();
-            
+        }
+
+        private async Task GetUser(String username)
+        {
+            user = await ejemplo.GetUsers(username);
         }
 
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             if(txtUser.Text == "admin" && txtPassword.Password == "admin")
             {
@@ -52,35 +51,61 @@ namespace App.MVVM.View
                 main.Show();
             }
 
-            var userFound = users.Where(x => x._id == txtUser.Text && x.correo == txtPassword.Password);
+            await GetUser(txtUser.Text);
 
-            if (userFound.Count() > 0)
+            if (user != null)
             {
 
-                var user = userFound.First();
-
-                UserProvider.userLogged = user;
-                
-                MainWindow main = new MainWindow();
-                main.Administration.Visibility = Visibility.Hidden;
-                this.Close();
-                main.Show();
-            }
-            else
-            {
-                userFound = users.Where(x => x._id == txtUser.Text);
-
-                if(userFound.Count() > 0)
+                if (user.password == txtPassword.Password)
                 {
-                    MessageBox.Show("La contraseña no es correcta");
+                    MainWindow main = new MainWindow();
+                    main.Administration.Visibility = Visibility.Hidden;
+                    this.Close();
+                    main.Show();
                 }
                 else
                 {
-                    MessageBox.Show("El usuario no existe");
+                    MessageBox.Show("La contraseña no es correcta");
                 }
 
-
+               
             }
+            else
+            {
+                MessageBox.Show("El usuario no existe");
+            }
+
+
+
+            //var userFound = user.Where(x => x._id == txtUser.Text && x.correo == txtPassword.Password);
+
+            //if (userFound.Count() > 0)
+            //{
+
+            //    var user = userFound.First();
+
+            //    UserProvider.userLogged = user;
+
+            //    MainWindow main = new MainWindow();
+            //    main.Administration.Visibility = Visibility.Hidden;
+            //    this.Close();
+            //    main.Show();
+            //}
+            //else
+            //{
+            //    userFound = users.Where(x => x._id == txtUser.Text);
+
+            //    if(userFound.Count() > 0)
+            //    {
+            //        MessageBox.Show("La contraseña no es correcta");
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("El usuario no existe");
+            //    }
+
+
+            //}
         }
 
         

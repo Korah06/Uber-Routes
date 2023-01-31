@@ -9,6 +9,6 @@ namespace App.MVVM.Model
     internal class UserResponse
     {
         public string status  { get; set; }
-        public List<User> data { get; set; }
+        public User data { get; set; }
     }
 }
