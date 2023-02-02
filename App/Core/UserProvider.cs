@@ -11,5 +11,7 @@ namespace App.Core
     {
         public static User userLogged { get; set; }
 
+        public static string token { get; set; }
+
     }
 }

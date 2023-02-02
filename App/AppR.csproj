@@ -120,6 +120,8 @@
     <Compile Include="Core\DataProvider.cs" />
     <Compile Include="Core\UserProvider.cs" />
     <Compile Include="MVVM\Model\Coment.cs" />
+    <Compile Include="MVVM\Model\Login.cs" />
+    <Compile Include="MVVM\Model\LoginResponse.cs" />
     <Compile Include="MVVM\Model\Route.cs" />
     <Compile Include="MVVM\Model\User.cs" />
     <Compile Include="MVVM\Model\UserResponse.cs" />

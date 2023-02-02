@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using App.MVVM.Model;
+using App.Core;
 
 namespace App
 {
@@ -20,14 +22,16 @@ namespace App
     /// </summary>
     public partial class Register : Window
     {
-
+        DataProvider ejemplo = new DataProvider();
         string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+        string[] emptyArray = new string[0];
         public Register()
         {
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
 
             if (txtEmail.Text == "" || txtName.Text == "" || txtPassword.Password == "" || txtSurname.Text == "" || txtUser.Text == "")
@@ -38,10 +42,30 @@ namespace App
             {
                 if (Regex.IsMatch(txtEmail.Text, pattern))
                 {
-                    MainWindow main = new MainWindow();
+                    User usuario = new User()
+                    {
+                        _id = txtUser.Text,
+                        name = txtName.Text,
+                        surname = txtSurname.Text,
+                        password = txtPassword.Password,
+                        following = new List<string>(),
+                        followers = new List<string>(),
+                        email = txtEmail.Text,
+                        picture = "example",
+                        register = "example",
+                        web = "example",
 
+                    };
+
+                    UserProvider.token = await ejemplo.Register(usuario);
+                    UserProvider.userLogged = usuario;
+
+                    MainWindow main = new MainWindow();
+                    main.Administration.Visibility = Visibility.Hidden;
                     this.Close();
                     main.Show();
+
+
                 }
                 else
                 {

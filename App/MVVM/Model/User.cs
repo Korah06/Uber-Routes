@@ -13,7 +13,7 @@ namespace App.MVVM.Model
         public string surname { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public List<string> friends { get; set; }
+        public List<string> following { get; set; }
         public List<string> followers { get; set; }
         public string picture { get; set; }
         public string register { get; set; }

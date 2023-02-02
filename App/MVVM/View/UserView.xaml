@@ -9,9 +9,9 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="333*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="267*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -31,6 +31,37 @@
                        FontWeight="Medium"
                        Margin="10,15,0,0"
                        FontFamily="Fonts/#Ubuntu-Regular"/>
+
+            <TextBlock Text="Followers:" 
+                       x:Name="FollowersTxt"
+                       Foreground="White"
+                       FontSize="15"
+                       FontWeight="Medium"
+                       Margin="20,22,0,0"
+                       FontFamily="Fonts/#Ubuntu-Regular"/>
+            <TextBlock Text="0" 
+                       x:Name="NFollowers"
+                       Foreground="White"
+                       FontSize="15"
+                       FontWeight="Medium"
+                       Margin="5,23,0,0"
+                       FontFamily="Fonts/#Ubuntu-Regular"/>
+
+            <TextBlock Text="Following:" 
+                       x:Name="FollowingTxt"
+                       Foreground="White"
+                       FontSize="15"
+                       FontWeight="Medium"
+                       Margin="20,22,0,0"
+                       FontFamily="Fonts/#Ubuntu-Regular"/>
+            
+            <TextBlock Text="0" 
+                       x:Name="NFollowing"
+                       Foreground="White"
+                       FontSize="15"
+                       FontWeight="Medium"
+                       Margin="5,23,0,0"
+                       FontFamily="Fonts/#Ubuntu-Regular"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.ColumnSpan="3">
@@ -41,19 +72,7 @@
                        Margin="10,15,0,0"
                        FontFamily="Fonts/#Ubuntu-Regular"/>
 
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical" Margin="15">
-
-                    <TextBlock Text="Ruta"
-                       Foreground="White"
-                       FontSize="25"
-                       FontWeight="Medium"
-                       HorizontalAlignment="Center"
-                       FontFamily="Fonts/#Ubuntu-Regular"/>
-
-                    <Image HorizontalAlignment="Center" Width="80" Source="../../Images/ruta.jpg"/>
-
-                </StackPanel>
+            <StackPanel Orientation="Horizontal" x:Name="routes">
 
                 <StackPanel Orientation="Vertical" Margin="15">
 
@@ -67,78 +86,12 @@
                     <Image HorizontalAlignment="Center" Width="80" Source="../../Images/ruta.jpg"/>
 
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="15">
 
-                    <TextBlock Text="Ruta"
-                       Foreground="White"
-                       FontSize="25"
-                       FontWeight="Medium"
-                       HorizontalAlignment="Center"
-                       FontFamily="Fonts/#Ubuntu-Regular"/>
 
-                    <Image HorizontalAlignment="Center" Width="80" Source="../../Images/ruta.jpg"/>
-
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="15">
-
-                    <TextBlock Text="Ruta"
-                       Foreground="White"
-                       FontSize="25"
-                       FontWeight="Medium"
-                       HorizontalAlignment="Center"
-                       FontFamily="Fonts/#Ubuntu-Regular"/>
-
-                    <Image HorizontalAlignment="Center" Width="80" Source="../../Images/ruta.jpg"/>
-
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="15">
-
-                    <TextBlock Text="Ruta"
-                       Foreground="White"
-                       FontSize="25"
-                       FontWeight="Medium"
-                       HorizontalAlignment="Center"
-                       FontFamily="Fonts/#Ubuntu-Regular"/>
-
-                    <Image HorizontalAlignment="Center" Width="80" Source="../../Images/ruta.jpg"/>
-
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="15">
-
-                    <TextBlock Text="Ruta"
-                       Foreground="White"
-                       FontSize="25"
-                       FontWeight="Medium"
-                       HorizontalAlignment="Center"
-                       FontFamily="Fonts/#Ubuntu-Regular"/>
-
-                    <Image HorizontalAlignment="Center" Width="80" Source="../../Images/ruta.jpg"/>
-
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Margin="15">
-
-                    <TextBlock Text="Ruta"
-                       Foreground="White"
-                       FontSize="25"
-                       FontWeight="Medium"
-                       HorizontalAlignment="Center"
-                       FontFamily="Fonts/#Ubuntu-Regular"/>
-
-                    <Image HorizontalAlignment="Center" Width="80" Source="../../Images/ruta.jpg"/>
-
-                </StackPanel>
 
             </StackPanel>
 
         </StackPanel>
-
-        <TextBlock Grid.Row="2" Text="Valoraciones"
-                       Foreground="White"
-                       FontSize="20"
-                   VerticalAlignment="Center"
-                       FontWeight="Medium"
-                       Margin="10,15,0,0"
-                       FontFamily="Fonts/#Ubuntu-Regular"/>
 
     </Grid>
 </UserControl>

@@ -37,7 +37,7 @@ namespace App.MVVM.View
 
         private async Task GetUser(String username)
         {
-            user = await ejemplo.GetUsers(username);
+            user = await ejemplo.GetUser(username);
         }
 
 
@@ -51,24 +51,17 @@ namespace App.MVVM.View
                 main.Show();
             }
 
-            await GetUser(txtUser.Text);
+            UserProvider.token =  await ejemplo.Login(txtUser.Text,txtPassword.Password);
 
-            if (user != null)
+            Console.WriteLine(UserProvider.token);
+
+            if (UserProvider.token != null || UserProvider.token != "")
             {
-
-                if (user.password == txtPassword.Password)
-                {
-                    MainWindow main = new MainWindow();
+                await GetUser(txtUser.Text);
+                MainWindow main = new MainWindow();
                     main.Administration.Visibility = Visibility.Hidden;
                     this.Close();
                     main.Show();
-                }
-                else
-                {
-                    MessageBox.Show("La contraseña no es correcta");
-                }
-
-               
             }
             else
             {
@@ -76,36 +69,6 @@ namespace App.MVVM.View
             }
 
 
-
-            //var userFound = user.Where(x => x._id == txtUser.Text && x.correo == txtPassword.Password);
-
-            //if (userFound.Count() > 0)
-            //{
-
-            //    var user = userFound.First();
-
-            //    UserProvider.userLogged = user;
-
-            //    MainWindow main = new MainWindow();
-            //    main.Administration.Visibility = Visibility.Hidden;
-            //    this.Close();
-            //    main.Show();
-            //}
-            //else
-            //{
-            //    userFound = users.Where(x => x._id == txtUser.Text);
-
-            //    if(userFound.Count() > 0)
-            //    {
-            //        MessageBox.Show("La contraseña no es correcta");
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("El usuario no existe");
-            //    }
-
-
-            //}
         }
 
         

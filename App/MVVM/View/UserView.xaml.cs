@@ -22,7 +22,7 @@ namespace App.MVVM.View
     /// </summary>
     public partial class UserView : UserControl
     {
-        User usuario;
+        User usuario = UserProvider.userLogged;
         public UserView()
         {
             usuario = UserProvider.userLogged;
@@ -32,7 +32,8 @@ namespace App.MVVM.View
 
         private void generateView()
         {
-            Console.WriteLine(usuario._id);
+            NFollowers.Text = usuario.followers.Count.ToString();
+            NFollowing.Text = usuario.following.Count.ToString();
             UsernameTxt.Text = ""+ usuario._id;
         }
     }
