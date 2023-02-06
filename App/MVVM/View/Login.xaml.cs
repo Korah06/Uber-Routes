@@ -35,10 +35,6 @@ namespace App.MVVM.View
             InitializeComponent();
         }
 
-        private async Task GetUser(String username)
-        {
-            user = await ejemplo.GetUser(username);
-        }
 
 
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -51,13 +47,19 @@ namespace App.MVVM.View
                 main.Show();
             }
 
-            UserProvider.token =  await ejemplo.Login(txtUser.Text,txtPassword.Password);
+            LoginResponse a =  await ejemplo.Login(txtUser.Text,txtPassword.Password);
+
+            UserProvider.token = a.token;
+            user = a.data;
+            UserProvider.userLogged = user;
+
+            
 
             Console.WriteLine(UserProvider.token);
 
             if (UserProvider.token != null || UserProvider.token != "")
             {
-                await GetUser(txtUser.Text);
+                
                 MainWindow main = new MainWindow();
                     main.Administration.Visibility = Visibility.Hidden;
                     this.Close();

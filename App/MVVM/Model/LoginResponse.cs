@@ -10,5 +10,7 @@ namespace App.MVVM.Model
     {
         public string status { get; set; }
         public string token { get; set; }
+        public User data { get; set; }
+
     }
 }

@@ -40,7 +40,7 @@ namespace App.Core
         }
 
 
-        public async Task<string> Login(string username,string password) {
+        public async Task<LoginResponse> Login(string username,string password) {
 
             try
             {
@@ -63,11 +63,11 @@ namespace App.Core
 
                     LoginResponse loginResult = System.Text.Json.JsonSerializer.Deserialize<LoginResponse>(result);
 
-                    return loginResult.token;
+                    return loginResult;
                 }
                 else
                 {
-                    return "";
+                    return null;
                 }
 
 
