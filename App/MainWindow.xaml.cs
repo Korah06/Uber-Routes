@@ -29,6 +29,15 @@ namespace App
         public MainWindow()
         {
             InitializeComponent();
+            changeImg();
+        }
+
+        public void changeImg()
+        {
+            ImageBrush brush = (ImageBrush)userBtn.Background;
+            brush.ImageSource = new BitmapImage(new Uri("http://localhost:9999/users/img/example-user.png", UriKind.RelativeOrAbsolute));
+            //brush.OpacityMask = new SolidColorBrush(Colors.Transparent);
+
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
@@ -53,7 +62,6 @@ namespace App
         {
             //userBtn.SetBinding()
 
-            radioCreate.IsChecked = false;
             radioHome.IsChecked = false;
             radioRoutes.IsChecked = false;
         }

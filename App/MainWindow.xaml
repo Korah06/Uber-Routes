@@ -68,13 +68,6 @@
                                  Style="{StaticResource MenuButtonTheme}"
                                  Command="{Binding RoutesViewCommand}"
                                  />
-                    <RadioButton x:Name="radioCreate" Content="Create Routes"
-                                 Height="50"
-                                 Foreground="White"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding RouteMapViewCommand}"
-                                 />
 
                     <RadioButton x:Name="Administration" Content="Administration"
                                  Height="50"
@@ -86,9 +79,9 @@
                                  />
 
                     <Button x:Name="userBtn" Command="{Binding UserViewCommand}" 
-                            Margin="470,0,0,0" Cursor="Hand" Click="userBtn_Click">
+                            Margin="600,0,0,0" Cursor="Hand" Click="userBtn_Click">
                         <Button.Background>
-                            <ImageBrush ImageSource="./images/user.png"/>
+                            <ImageBrush />
                         </Button.Background>
                     </Button>
 

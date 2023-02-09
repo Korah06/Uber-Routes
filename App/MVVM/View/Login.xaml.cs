@@ -32,43 +32,42 @@ namespace App.MVVM.View
 
         public Login()
         {
+            
             InitializeComponent();
+            txtUser.Text = "admin";
+            txtPassword.Password = "admin";
+            /*TODO*/
         }
 
 
 
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            if(txtUser.Text == "admin" && txtPassword.Password == "admin")
-            {
-                MainWindow main = new MainWindow();
-
-                this.Close();
-                main.Show();
-            }
-
-            LoginResponse a =  await ejemplo.Login(txtUser.Text,txtPassword.Password);
+            
+            LoginResponse a = await ejemplo.Login(txtUser.Text, txtPassword.Password);
 
             UserProvider.token = a.token;
             user = a.data;
             UserProvider.userLogged = user;
 
-            
+
 
             Console.WriteLine(UserProvider.token);
 
             if (UserProvider.token != null || UserProvider.token != "")
             {
-                
+
                 MainWindow main = new MainWindow();
-                    main.Administration.Visibility = Visibility.Hidden;
-                    this.Close();
-                    main.Show();
+                this.Close();
+                main.Show();
             }
             else
             {
                 MessageBox.Show("El usuario no existe");
             }
+            
+
+            
 
 
         }

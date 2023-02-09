@@ -21,8 +21,9 @@
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
-            <Image Width="50" 
-                   Source="../../Images/user.png" 
+            <Image Width="50"
+                   Source="../../Images/user.png"
+                   x:Name="logoUser"
                    VerticalAlignment="Top"/>
             <TextBlock Text="User"
                        x:Name="UsernameTxt"

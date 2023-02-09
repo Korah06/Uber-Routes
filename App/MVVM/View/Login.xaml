@@ -261,15 +261,6 @@
 
                 </StackPanel>
 
-                <TextBlock Text="¿Has olvidado la contraseña?"
-                           Foreground="White"
-                           FontSize="12"
-                           FontWeight="Medium"
-                           FontFamily="Montserrat"
-                           Cursor="Hand"
-                           Margin="0,4,0,0"
-                           HorizontalAlignment="Center" MouseDown="TextBlock_MouseDown_1"/>
-
             </StackPanel>
         </Grid>
 

@@ -51,9 +51,10 @@ namespace App
                         following = new List<string>(),
                         followers = new List<string>(),
                         email = txtEmail.Text,
-                        picture = "example",
+                        picture = "example-user.png",
                         register = "example",
-                        web = "example",
+                        web = "no Web",
+                        admin = true,
 
                     };
 

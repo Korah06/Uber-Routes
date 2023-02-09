@@ -18,7 +18,8 @@
 
         <ScrollViewer x:Name="scroll" Grid.Column="1">
 
-
+            <StackPanel x:Name="stack">
+            </StackPanel>
             
 
 

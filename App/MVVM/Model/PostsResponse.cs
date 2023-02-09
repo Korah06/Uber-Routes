@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace App.MVVM.Model
 {
-    internal class UserResponse
+    internal class PostsResponse
     {
-        public string status  { get; set; }
-        public List<User> data { get; set; }
+        public string status { get; set; }
+        public List<Post> data { get; set; }
     }
 }

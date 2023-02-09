@@ -22,24 +22,6 @@ namespace App.Core
     {
         private HttpClient client = new HttpClient();
 
-        public async Task<User> GetUser(String username)
-        {
-            try
-            {
-                string responseBody = await client.GetStringAsync($"http://localhost:9999/users/{username}");
-                UserResponse result = JsonConvert.DeserializeObject<UserResponse>(responseBody);
-                return result.data;
-
-            }
-            catch(Exception e)
-            {
-                MessageBox.Show("No tiene conexión con el servidor","Error de Conexión", MessageBoxButton.OK,MessageBoxImage.Error,MessageBoxResult.None);
-
-                return new User();
-            };
-        }
-
-
         public async Task<LoginResponse> Login(string username,string password) {
 
             try
@@ -63,16 +45,23 @@ namespace App.Core
 
                     LoginResponse loginResult = System.Text.Json.JsonSerializer.Deserialize<LoginResponse>(result);
 
-                    return loginResult;
+                    if (loginResult.data != null && loginResult.data.admin)
+                    {
+                        return loginResult;
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("El usuario no es administrador O no existe", "Error de Conexión", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.None);
+                        return null;
+                    }
+
                 }
                 else
                 {
                     return null;
                 }
 
-
-                //LoginResponse result = JsonConvert.DeserializeObject<LoginResponse>(responseString);
-                //var responseString = await response.Content.ReadAsStringAsync();
 
             }
             catch (Exception e)
@@ -83,29 +72,6 @@ namespace App.Core
 
         public async Task<string> Register(User usuario)
         {
-            //string result;
-            //WebRequest request = WebRequest.Create("http://localhost:9999/users/register");
-            //request.Method = "POST";
-            //request.ContentType = "application/json";
-
-            //using (var oSW = new StreamWriter(request.GetRequestStream()))
-            //{
-            //    var serialized = System.Text.Json.JsonSerializer.Serialize<User>(usuario);
-            //    oSW.Write(serialized);
-            //    await oSW.FlushAsync();
-            //    oSW.Close();
-
-            //}
-
-            //WebResponse response = request.GetResponse();
-            //using (var oSR =  new StreamReader(response.GetResponseStream()))
-            //{
-            //    result = oSR.ReadToEnd().Trim();
-
-            //}
-            //LoginResponse loginResult = System.Text.Json.JsonSerializer.Deserialize<LoginResponse>(result);
-
-            //return loginResult.token;
 
             try
             {
@@ -133,9 +99,6 @@ namespace App.Core
                 }
 
 
-                //LoginResponse result = JsonConvert.DeserializeObject<LoginResponse>(responseString);
-                //var responseString = await response.Content.ReadAsStringAsync();
-
             }
             catch (Exception e)
             {
@@ -144,6 +107,44 @@ namespace App.Core
         }
 
 
+        public async Task<List<Post>> GetPosts()
+        {
+            try
+            {
+                client = new HttpClient();
+                string responseBody = await client.GetStringAsync("http://localhost:9999/posts");
+                PostsResponse result = JsonConvert.DeserializeObject<PostsResponse>(responseBody);
+
+
+                return result.data;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No tiene conexión con el servidor", "Error de Conexión", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.None);
+
+                return null;
+            };
+        }
+
+        public async Task<List<User>> GetUsers()
+        {
+            try
+            {
+                client = new HttpClient();
+                string responseBody = await client.GetStringAsync("http://localhost:9999/users/");
+                UserResponse result = JsonConvert.DeserializeObject<UserResponse>(responseBody);
+
+                return result.data;
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("No tiene conexión con el servidor", "Error de Conexión", MessageBoxButton.OK, MessageBoxImage.Error, MessageBoxResult.None);
+
+                return null;
+            };
+        }
 
     }
 }

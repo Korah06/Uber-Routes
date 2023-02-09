@@ -1,4 +1,6 @@
-﻿using System;
+﻿using App.Core;
+using App.MVVM.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,27 @@ namespace App.MVVM.View
     /// </summary>
     public partial class AdmUser : UserControl
     {
+
+        DataProvider provider = new DataProvider();
+        List<User> users = new List<User>();
+
+        public async void getterUsers()
+        {
+            users = await provider.GetUsers();
+
+            foreach(User user in users)
+            {
+                comboBox.Items.Add(user.name);
+            }
+
+        }
+
         public AdmUser()
         {
+            getterUsers();
             InitializeComponent();
         }
+
+
     }
 }

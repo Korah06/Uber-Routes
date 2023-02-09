@@ -32,6 +32,9 @@ namespace App.MVVM.View
 
         private void generateView()
         {
+            string url = "http://localhost:9999/users/img/" + usuario.picture;
+
+            logoUser.Source = new BitmapImage(new Uri(url,UriKind.RelativeOrAbsolute));
             NFollowers.Text = usuario.followers.Count.ToString();
             NFollowing.Text = usuario.following.Count.ToString();
             UsernameTxt.Text = ""+ usuario._id;

@@ -18,6 +18,7 @@ namespace App.MVVM.Model
         public string picture { get; set; }
         public string register { get; set; }
         public string web { get; set; }
+        public Boolean admin { get; set; }
 
 
 
