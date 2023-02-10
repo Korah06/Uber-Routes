@@ -60,7 +60,8 @@ namespace App.MVVM.View
                     Height = 50,
                     Width = 890,
                     Background = fondo,
-                    Margin = new Thickness(0, 0, 0, 10)
+                    Margin = new Thickness(0, 0, 0, 10),
+                    Tag = user._id,
                 };
 
                 StackPanel stack = new StackPanel();
@@ -223,7 +224,20 @@ namespace App.MVVM.View
                     stack.Children.Add(adminBorder);
                 }
 
+                userGrid.MouseLeftButtonDown += new MouseButtonEventHandler(usergrid_MouseDown);
+
+                void usergrid_MouseDown(object sender, MouseEventArgs e)
+                {
+                    comboBoxId.SelectedValue = userGrid.Tag;
+                }
+
+
                 stackPanel.Children.Add(userGrid);
+
+                if (comboBoxId.SelectedValue == userGrid.Tag)
+                {
+                    userGrid.Focus();
+                }
 
 
             }
