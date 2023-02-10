@@ -46,9 +46,16 @@ namespace App.MVVM.View
             
             LoginResponse a = await ejemplo.Login(txtUser.Text, txtPassword.Password);
 
-            UserProvider.token = a.token;
-            user = a.data;
-            UserProvider.userLogged = user;
+            if(a != null) {
+                UserProvider.token = a.token;
+                user = a.data;
+                UserProvider.userLogged = user;
+            }
+            else
+            {
+                UserProvider.token =null;
+                user = null;
+            }
 
 
 

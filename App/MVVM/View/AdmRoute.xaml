@@ -15,13 +15,38 @@
     
     <Grid>
 
-        <ScrollViewer x:Name="scroll">
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="ID Route"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Foreground="White"
+                       FontSize="20"/>
+
+                <ComboBox x:Name="comboBoxId" SelectionChanged="comboBoxId_SelectionChanged"></ComboBox>
+
+            </StackPanel>
+
+            <ScrollViewer Grid.Column="1">
+                <StackPanel Orientation="Vertical" x:Name="stackPanel">
 
 
 
 
+                </StackPanel>
+            </ScrollViewer>
 
-        </ScrollViewer>
+
+        </Grid>
 
     </Grid>
 </UserControl>

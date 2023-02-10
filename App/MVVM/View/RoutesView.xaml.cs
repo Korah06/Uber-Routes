@@ -50,18 +50,23 @@ namespace App.MVVM.View
 
         }
 
+        
+
 
         private void makePageGrid()
         {
             foreach (Post post in posts) {
 
+                
 
                 Grid postGrid = new Grid
                 {
                     Height = 270,
-                    Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#99E2B4")),
+                    Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#56AB91")),
                     Margin = new Thickness(0,0,0,10)
                 };
+
+                
 
                 postGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                 postGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
@@ -116,15 +121,14 @@ namespace App.MVVM.View
 
                 stack.Children.Add(postGrid);
 
-                Console.WriteLine(post._id);
+
+                postGrid.MouseLeftButtonDown += new MouseButtonEventHandler(gridPost_mouseDown);
+                void gridPost_mouseDown(object sender, MouseEventArgs e)
+                {
+                    MessageBox.Show(titleText.Text);
+                }
 
             }
-
-            
-
-            
-
-
         }
 
     }
