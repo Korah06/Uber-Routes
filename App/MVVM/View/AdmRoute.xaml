@@ -33,7 +33,181 @@
                        FontSize="20"/>
 
                 <ComboBox x:Name="comboBoxId" SelectionChanged="comboBoxId_SelectionChanged"></ComboBox>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel  Grid.Row="0" >
+                        <TextBlock Text="Nombre de la ruta"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="13"/>
+                        <TextBox x:Name="nameText"/>
+                    </StackPanel>
 
+                    <StackPanel  Grid.Row="1" >
+                        <TextBlock Text="Categoria de la ruta"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="13"/>
+                        <TextBox x:Name="catText"/>
+                    </StackPanel>
+
+                    <StackPanel  Grid.Row="2" >
+                        <TextBlock Text="Distancia de la Ruta"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="13"/>
+                        <TextBox x:Name="distText"/>
+                    </StackPanel>
+                    
+                    <StackPanel  Grid.Row="3" >
+                        <TextBlock Text="Dificultad de la Ruta"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="13"/>
+                        <TextBox x:Name="diffText"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="4" Cursor="Hand">
+                        <TextBlock Text="Imagen de la Ruta"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="White"
+                       FontSize="13"/>
+
+                        <Button x:Name="btnImage"
+                        HorizontalAlignment="Left"
+                        BorderThickness="0"
+                        Content="Añadir imagen"
+                        Foreground="White"
+                        FontSize="10"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Margin="10,5,0,0" Click="btnImage_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" 
+                                    Value="#358F80"/>
+                                    <!--Esto es para cambiar el color cuando pasa el raton por encima-->
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" 
+                                         Value="True">
+                                            <Setter Property="Background" 
+                                            Value="#278BEF"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="88" Height="18"
+                                    CornerRadius="10"
+                                    Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+                        
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="5" Orientation="Horizontal">
+                        <Button x:Name="btnSave"
+                        HorizontalAlignment="Left"
+                        BorderThickness="0"
+                        Content="Guardar"
+                        Foreground="White"
+                        FontSize="10"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Margin="10,120,0,0" Click="btnSave_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" 
+                                    Value="#358F80"/>
+                                    <!--Esto es para cambiar el color cuando pasa el raton por encima-->
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" 
+                                         Value="True">
+                                            <Setter Property="Background" 
+                                            Value="#278BEF"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="78" Height="18"
+                                    CornerRadius="10"
+                                    Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+
+                        <Button x:Name="btnDelete"
+                        HorizontalAlignment="Left"
+                        BorderThickness="0"
+                        Content="Eliminar Ruta"
+                        Foreground="White"
+                        FontSize="10"
+                        FontFamily="Montserrat"
+                        Cursor="Hand"
+                        Grid.Column="1"
+                        Margin="10,120,0,0" Click="btnDelete_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" 
+                                    Value="#9d0208"/>
+                                    <!--Esto es para cambiar el color cuando pasa el raton por encima-->
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" 
+                                         Value="True">
+                                            <Setter Property="Background" 
+                                            Value="#d00000"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="78" Height="18"
+                                    CornerRadius="10"
+                                    Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+                
             </StackPanel>
 
             <ScrollViewer Grid.Column="1">

@@ -15,6 +15,9 @@ using System.Text.Json.Serialization;
 using App.MVVM.View;
 using System.Net;
 using System.IO;
+using MapControl;
+using System.Net.Http.Headers;
+using System.Security.Policy;
 
 namespace App.Core
 {
@@ -144,6 +147,83 @@ namespace App.Core
 
                 return null;
             };
+        }
+
+        public async void UploadPostImg(Post post)
+        {
+            try
+            {
+
+                string direccion = "http://localhost:9999/posts/deleteimg/"+post._id;
+
+                var client = new HttpClient();
+
+                HttpContent content = null;
+
+                var httpResponse = await client.PutAsync(direccion, content);
+
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e+"");
+            }
+        }
+
+
+        public async void UploadUserImg(User user)
+        {
+            try
+            {
+
+                string direccion = "http://localhost:9999/users/deleteimg/" + user._id;
+
+                var client = new HttpClient();
+
+                HttpContent content = null;
+
+                var httpResponse = await client.PutAsync(direccion, content);
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
+            }
+        }
+
+        public async void deleteUser(User user)
+        {
+            try
+            {
+                var httpResponse = await client.DeleteAsync("http://localhost:9999/users/"+user._id);
+                if (httpResponse.IsSuccessStatusCode)
+                {
+
+                    var result = await httpResponse.Content.ReadAsStringAsync();
+
+                }
+            }
+            catch (Exception e) 
+            {
+                MessageBox.Show(e + "");
+            }
+        }
+
+        public async void deletePost(Post post)
+        {
+            try
+            {
+                var httpResponse = await client.DeleteAsync("http://localhost:9999/posts/" + post._id);
+                if (httpResponse.IsSuccessStatusCode)
+                {
+
+                    var result = await httpResponse.Content.ReadAsStringAsync();
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
+            }
         }
 
     }

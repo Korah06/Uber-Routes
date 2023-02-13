@@ -1,8 +1,10 @@
 ﻿using App.Core;
 using App.MVVM.Model;
+using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,8 @@ namespace App.MVVM.View
     {
         DataProvider ejemplo = new DataProvider();
         List<Post> posts = new List<Post>();
+
+        string filePath;
         public async void getterPosts()
         {
             posts = await ejemplo.GetPosts();
@@ -58,6 +62,15 @@ namespace App.MVVM.View
                     fondo = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#358F80"));
                 }
 
+                Border gridBorder = new Border();
+                gridBorder.BorderBrush = fondo;
+                gridBorder.Background = fondo;
+                gridBorder.BorderThickness = new Thickness(2);
+                gridBorder.CornerRadius = new CornerRadius(7);
+                gridBorder.Margin = new Thickness(0, 0, 20, 10);
+                gridBorder.Height = 270;
+                gridBorder.Width = 890;
+
 
                 Grid postGrid = new Grid
                 {
@@ -89,7 +102,7 @@ namespace App.MVVM.View
                 {
                     Width = 270,
                     HorizontalAlignment = HorizontalAlignment.Left,
-                    Source = new BitmapImage(new Uri("../../Images/niagara.jpg", UriKind.RelativeOrAbsolute))
+                    Source = new BitmapImage(new Uri("http://localhost:9999/posts/img/" + post.image, UriKind.RelativeOrAbsolute))
                 };
                 Grid.SetRow(image, 1);
                 Grid.SetColumn(image, 0);
@@ -128,8 +141,8 @@ namespace App.MVVM.View
                     comboBoxId.SelectedValue = postGrid.Tag;
                 }
 
-
-                stackPanel.Children.Add(postGrid);
+                gridBorder.Child = postGrid;
+                stackPanel.Children.Add(gridBorder);
 
                 if(comboBoxId.SelectedValue == postGrid.Tag)
                 {
@@ -151,6 +164,70 @@ namespace App.MVVM.View
             deleteComponents();
             makePageGrid();
 
+
+            foreach(Post post in posts)
+            {
+                if(post._id == comboBoxId.SelectedValue)
+                {
+                    catText.Text = post.category;
+                    distText.Text = post.distance;
+                    nameText.Text = post.name;
+                    diffText.Text = post.difficulty;
+                    break;
+                }
+            }
+
+        }
+
+        private void btnImage_Click(object sender, RoutedEventArgs e)
+        {
+            Post postSend = null;
+
+            foreach (Post post in posts)
+            {
+                if (post._id == comboBoxId.SelectedValue)
+                {
+                    postSend = post;
+                }
+            }
+
+            
+
+            DataProvider a = new DataProvider();
+            a.UploadPostImg(postSend);
+
+            deleteComponents();
+            getterPosts();
+            
+            catText.Text = "";
+            distText.Text = "";
+            nameText.Text = "";
+            diffText.Text = "";
+
+
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Post postDelete = null;
+
+            foreach (Post post in posts)
+            {
+                if (post._id == comboBoxId.SelectedValue)
+                {
+                    postDelete = post;
+                }
+            }
+
+            DataProvider a = new DataProvider();
+            a.deletePost(postDelete);
+            deleteComponents();
+            getterPosts();
         }
     }
 }
