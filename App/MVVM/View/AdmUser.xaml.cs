@@ -294,7 +294,6 @@ namespace App.MVVM.View
 
                     nameText.Text = user.name;
                     surnameText.Text = user.surname;
-                    nameText.Text = user.name;
                     webText.Text = user.web;
                     break;
                 }
@@ -303,7 +302,39 @@ namespace App.MVVM.View
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            
+            User userUpdate = null;
+
+            foreach (User user in users)
+            {
+                if (user._id == comboBoxId.SelectedValue)
+                {
+                    userUpdate = user;
+                    userUpdate.surname = surnameText.Text;
+                    userUpdate.web = webText.Text;
+                    userUpdate.name = nameText.Text;
+
+                    if (adminBox.SelectedIndex == 0)
+                    {
+                        userUpdate.admin = true;
+                    }
+                    else
+                    {
+                        userUpdate.admin = false;
+
+                    }
+                }
+            }
+
+            if (postUpdate == null)
+            {
+                MessageBox.Show("No se ha seleccionado ningúna publicación");
+            }
+            else
+            {
+                DataProvider a = new DataProvider();
+                a.updatePost(postUpdate);
+                rechargePage();
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

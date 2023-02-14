@@ -225,6 +225,63 @@ namespace App.Core
                 MessageBox.Show(e + "");
             }
         }
+        public async void updatePost(Post post)
+        {
+            
+
+            try
+            {
+
+                client = new HttpClient();
+                var serialized = System.Text.Json.JsonSerializer.Serialize<Post>(post);
+
+
+
+                HttpContent content = new StringContent(serialized, System.Text.Encoding.UTF8, "application/JSON");
+
+
+                var httpResponse = await client.PutAsync("http://localhost:9999/posts/admupdate/" + post._id, content);
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Se ha modificado la información de la ruta"+ post.name + "con id: " + post._id);
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
+                
+            }
+        }
+
+        public async void updateUser(User user)
+        {
+            try
+            {
+
+                client = new HttpClient();
+                var serialized = System.Text.Json.JsonSerializer.Serialize<User>(user);
+
+
+
+                HttpContent content = new StringContent(serialized, System.Text.Encoding.UTF8, "application/JSON");
+
+
+                var httpResponse = await client.PutAsync("http://localhost:9999/users/admupdate/" + user._id, content);
+
+                if (httpResponse.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Se ha modificado la información del usuario:" + user._id);
+                }
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
+
+            }
+        }
 
     }
 }

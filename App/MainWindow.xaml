@@ -61,13 +61,7 @@
                                  IsChecked="True"
                                  Command="{Binding HomeViewCommand}"
                                  />
-                    <RadioButton x:Name="radioRoutes" Content="Routes"
-                                 Height="50"
-                                 Foreground="White"
-                                 FontSize="14"
-                                 Style="{StaticResource MenuButtonTheme}"
-                                 Command="{Binding RoutesViewCommand}"
-                                 />
+                    
 
                     <RadioButton x:Name="Administration" Content="Administration"
                                  Height="50"

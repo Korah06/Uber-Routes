@@ -42,6 +42,9 @@ namespace App.MVVM.View
 
 
         }
+
+        
+
         public AdmRoute()
         {
             getterPosts();
@@ -111,6 +114,8 @@ namespace App.MVVM.View
                 TextBlock descriptionText = new TextBlock
                 {
                     Text = post.description,
+                    TextWrapping = TextWrapping.Wrap,
+                    Margin = new Thickness(0,0,100,0),
                 };
                 Grid.SetRow(descriptionText, 1);
 
@@ -127,7 +132,7 @@ namespace App.MVVM.View
                     Text = "Creator: " + post.user
                 };
 
-                TextBlock dateText = new TextBlock { Text = "Date: 01/01/2022" };
+                TextBlock dateText = new TextBlock { Text = "Date: " + post.date };
                 creatorAndDate.Children.Add(creatorText);
                 creatorAndDate.Children.Add(dateText);
                 Grid.SetRow(creatorAndDate, 2);
@@ -159,6 +164,19 @@ namespace App.MVVM.View
             stackPanel.Children.Clear();
         }
 
+        public async void rechargePage()
+        {
+            posts = await ejemplo.GetPosts();
+            foreach (Post post in posts)
+            {
+                comboBoxId.Items.Add(post._id);
+
+            }
+
+            deleteComponents();
+            makePageGrid();
+
+        }
         private void comboBoxId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             deleteComponents();
@@ -196,8 +214,7 @@ namespace App.MVVM.View
             DataProvider a = new DataProvider();
             a.UploadPostImg(postSend);
 
-            deleteComponents();
-            getterPosts();
+            rechargePage();
             
             catText.Text = "";
             distText.Text = "";
@@ -209,6 +226,32 @@ namespace App.MVVM.View
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            Post postUpdate = null;
+
+            foreach (Post post in posts)
+            {
+                if (post._id == comboBoxId.SelectedValue)
+                {
+                    postUpdate = post;
+                    postUpdate.distance = distText.Text;
+                    postUpdate.category = catText.Text;
+                    postUpdate.name = nameText.Text;
+                    postUpdate.difficulty = diffText.Text;
+                }
+            }
+
+            if (postUpdate == null)
+            {
+                MessageBox.Show("No se ha seleccionado ningúna publicación");
+            }
+            else
+            {
+                DataProvider a = new DataProvider();
+                a.updatePost(postUpdate);
+                rechargePage();
+            }
+
+
 
         }
 
@@ -224,10 +267,18 @@ namespace App.MVVM.View
                 }
             }
 
-            DataProvider a = new DataProvider();
-            a.deletePost(postDelete);
-            deleteComponents();
-            getterPosts();
+            if(postDelete == null)
+            {
+                MessageBox.Show("No se ha seleccionado ningúna publicación");
+            }
+            else
+            {
+                DataProvider a = new DataProvider();
+                a.deletePost(postDelete);
+                rechargePage();
+            }
+
+            
         }
     }
 }
