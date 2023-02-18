@@ -70,7 +70,7 @@ namespace App.MVVM.View
                 gridBorder.Background = fondo;
                 gridBorder.BorderThickness = new Thickness(2);
                 gridBorder.CornerRadius = new CornerRadius(7);
-                gridBorder.Margin = new Thickness(0, 0, 20, 10);
+                gridBorder.Margin = new Thickness(0, 5, 20, 5);
                 gridBorder.Height = 270;
                 gridBorder.Width = 890;
 
@@ -175,7 +175,8 @@ namespace App.MVVM.View
 
                 void commentButton_Click(object sender, RoutedEventArgs e)
                 {
-
+                    CommentsView commentsView = new CommentsView();
+                    commentsView.Show();
                 }
 
 

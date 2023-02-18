@@ -21,9 +21,29 @@
                 <ColumnDefinition Width="0.3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
 
-            </Grid.RowDefinitions>
+            <Border Grid.Column="1"
+                    CornerRadius="0,0,20,0" 
+                    BorderBrush="#99E2B4" 
+                    BorderThickness="2" 
+                    Background="#99E2B4">
+                <Rectangle 
+                    Grid.Column="1" 
+                    Fill="#99E2B4" >
+                    <Rectangle.Clip>
+                        <RectangleGeometry Rect="0,0,100,50" RadiusX="0" RadiusY="0" >
+                            <RectangleGeometry.Transform>
+                                <TransformGroup>
+                                    <TranslateTransform X="0" Y="0" />
+                                    <RotateTransform Angle="0" />
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    <SkewTransform AngleX="0" AngleY="0" />
+                                </TransformGroup>
+                            </RectangleGeometry.Transform>
+                        </RectangleGeometry>
+                    </Rectangle.Clip>
+                </Rectangle>
+            </Border>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="ID Route"
@@ -42,8 +62,8 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
-                    <StackPanel  Grid.Row="0" >
+
+                    <StackPanel  Grid.Row="0" Margin="0,0,10,0">
                         <TextBlock Text="Nombre de la ruta"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
@@ -52,7 +72,7 @@
                         <TextBox x:Name="nameText"/>
                     </StackPanel>
 
-                    <StackPanel  Grid.Row="1" >
+                    <StackPanel  Grid.Row="1" Margin="0,0,10,0">
                         <TextBlock Text="Categoria de la ruta"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
@@ -61,7 +81,7 @@
                         <TextBox x:Name="catText"/>
                     </StackPanel>
 
-                    <StackPanel  Grid.Row="2" >
+                    <StackPanel  Grid.Row="2" Margin="0,0,10,0">
                         <TextBlock Text="Distancia de la Ruta"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
@@ -69,8 +89,8 @@
                        FontSize="13"/>
                         <TextBox x:Name="distText"/>
                     </StackPanel>
-                    
-                    <StackPanel  Grid.Row="3" >
+
+                    <StackPanel  Grid.Row="3" Margin="0,0,10,0">
                         <TextBlock Text="Dificultad de la Ruta"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
@@ -79,7 +99,7 @@
                         <TextBox x:Name="diffText"/>
                     </StackPanel>
 
-                    <StackPanel Grid.Row="4" Cursor="Hand">
+                    <StackPanel Grid.Row="4" Margin="0,0,10,0">
                         <TextBlock Text="Imagen de la Ruta"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"

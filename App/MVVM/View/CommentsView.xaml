@@ -16,7 +16,7 @@
         <ResourceDictionary Source="../../Theme/ScrollTheme.xaml"></ResourceDictionary>
     </Window.Resources>
 
-    <Border Background="#036666"
+    <Border Background="#99E2B4"
             CornerRadius="20">
         <Grid>
             <ScrollViewer Grid.Column="1">

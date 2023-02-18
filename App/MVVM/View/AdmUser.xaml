@@ -18,11 +18,32 @@
                 <ColumnDefinition Width="0.3*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
 
-            </Grid.RowDefinitions>
+            <Border Grid.Column="1"
+                    CornerRadius="0,0,20,0" 
+                    BorderBrush="#99E2B4" 
+                    BorderThickness="2" 
+                    Background="#99E2B4">
+                <Rectangle 
+                    Grid.Column="1" 
+                    Fill="#99E2B4" >
+                    <Rectangle.Clip>
+                        <RectangleGeometry Rect="0,0,100,50" RadiusX="0" RadiusY="0" >
+                            <RectangleGeometry.Transform>
+                                <TransformGroup>
+                                    <TranslateTransform X="0" Y="0" />
+                                    <RotateTransform Angle="0" />
+                                    <ScaleTransform ScaleX="1" ScaleY="1" />
+                                    <SkewTransform AngleX="0" AngleY="0" />
+                                </TransformGroup>
+                            </RectangleGeometry.Transform>
+                        </RectangleGeometry>
+                    </Rectangle.Clip>
+                </Rectangle>
+            </Border>
 
-            <StackPanel Orientation="Vertical">
+
+            <StackPanel Orientation="Vertical" Margin="0,0,10,0">
                 <TextBlock Text="UserName"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -41,7 +62,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <StackPanel  Grid.Row="0" >
+                    <StackPanel  Grid.Row="0"  Margin="0,0,10,0">
                         <TextBlock Text="Nombre del usuario"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
@@ -50,7 +71,7 @@
                         <TextBox x:Name="nameText"/>
                     </StackPanel>
 
-                    <StackPanel  Grid.Row="1" >
+                    <StackPanel  Grid.Row="1" Margin="0,0,10,0">
                         <TextBlock Text="Apellidos del usuario"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
@@ -59,7 +80,7 @@
                         <TextBox x:Name="surnameText"/>
                     </StackPanel>
 
-                    <StackPanel  Grid.Row="2" >
+                    <StackPanel  Grid.Row="2" Margin="0,0,10,0">
                         <TextBlock Text="Web del usuario"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
@@ -68,7 +89,7 @@
                         <TextBox x:Name="webText"/>
                     </StackPanel>
 
-                    <StackPanel  Grid.Row="3" >
+                    <StackPanel  Grid.Row="3" Margin="0,0,10,0">
                         <TextBlock Text="Admin"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left"
