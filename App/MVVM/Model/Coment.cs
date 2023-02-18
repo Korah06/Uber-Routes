@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace App.MVVM.Model
 {
-    internal class Coment
+    public class Coment
     {
         public int _id { get; set; }
-        public string descripcion { get; set; }
-        public string usuario { get; set; }
-        public string publicacion { get; set; }
-        public DateTime fecha { get; set; }
+        public string description { get; set; }
+        public string user { get; set; }
+        public string post { get; set; }
+        public string time { get; set; }
+        public string date { get; set; }
     }
 }

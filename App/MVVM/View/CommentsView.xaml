@@ -1,0 +1,33 @@
+﻿<Window x:Class="App.MVVM.View.CommentsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:App.MVVM.View"
+        mc:Ignorable="d"
+        Title="CommentsView" Height="450" Width="600"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        WindowStyle="None">
+
+    <Window.Resources>
+        <ResourceDictionary Source="../../Theme/ScrollTheme.xaml"></ResourceDictionary>
+    </Window.Resources>
+
+    <Border Background="#036666"
+            CornerRadius="20">
+        <Grid>
+            <ScrollViewer Grid.Column="1">
+                <StackPanel Orientation="Vertical" x:Name="stackPanel">
+
+                    
+
+
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Border>
+    
+</Window>

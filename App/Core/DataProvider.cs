@@ -263,12 +263,10 @@ namespace App.Core
                 client = new HttpClient();
                 var serialized = System.Text.Json.JsonSerializer.Serialize<User>(user);
 
-
-
                 HttpContent content = new StringContent(serialized, System.Text.Encoding.UTF8, "application/JSON");
 
 
-                var httpResponse = await client.PutAsync("http://localhost:9999/users/admupdate/" + user._id, content);
+                var httpResponse = await client.PutAsync("http://localhost:9999/users/adm/" + user._id, content);
 
                 if (httpResponse.IsSuccessStatusCode)
                 {
@@ -280,6 +278,45 @@ namespace App.Core
             {
                 MessageBox.Show(e + "");
 
+            }
+        }
+
+        public async Task<List<Post>> getPostsByUser(User user)
+        {
+            try
+            {
+                client = new HttpClient();
+
+                Post data = new Post()
+                {
+                    user = user._id
+                };
+
+                var serialized = System.Text.Json.JsonSerializer.Serialize<Post>(data);
+
+
+                HttpContent content = new StringContent(serialized, System.Text.Encoding.UTF8, "application/JSON");
+
+                var response = await client.PostAsync("http://localhost:9999/posts/byuser", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseBody = await response.Content.ReadAsStringAsync();
+                    PostsResponse result = JsonConvert.DeserializeObject<PostsResponse>(responseBody);
+                    return result.data;
+                }
+                else
+                {
+                    MessageBox.Show("Ha habido algún fallo de conexión");
+                    return null;
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
+                return null;
             }
         }
 

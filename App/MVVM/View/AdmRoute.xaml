@@ -89,7 +89,7 @@
                         <Button x:Name="btnImage"
                         HorizontalAlignment="Left"
                         BorderThickness="0"
-                        Content="Añadir imagen"
+                        Content="Modificar Imagen"
                         Foreground="White"
                         FontSize="10"
                         FontFamily="Montserrat"
@@ -113,7 +113,7 @@
 
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
-                                    <Border Width="88" Height="18"
+                                    <Border Width="98" Height="18"
                                     CornerRadius="10"
                                     Background="{TemplateBinding Background}">
                                         <ContentPresenter VerticalAlignment="Center"

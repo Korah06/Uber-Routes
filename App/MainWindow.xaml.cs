@@ -17,6 +17,7 @@ using App.MVVM.Model;
 using System.Windows.Shapes;
 using App.Core;
 using User = App.MVVM.Model.User;
+using Login = App.MVVM.View.Login;
 
 namespace App
 {
@@ -63,7 +64,30 @@ namespace App
             //userBtn.SetBinding()
 
             radioHome.IsChecked = false;
-            radioRoutes.IsChecked = false;
+            //radioRoutes.IsChecked = false;
+        }
+
+        private void closeSession_Click(object sender, RoutedEventArgs e)
+        {
+
+            MessageBoxResult result = MessageBox.Show("Desea cerrar sesion?","Cierre de sesion",MessageBoxButton.YesNo);
+
+            if(result == MessageBoxResult.Yes)
+            {
+                MessageBox.Show("¡Hasta la proxima!");
+
+                UserProvider.token = null;
+                UserProvider.userLogged = null;
+                Login login = new Login();
+                this.Close();
+                login.Show();
+            }
+            else
+            {
+
+            }
+            
+
         }
     }
 }

@@ -273,6 +273,20 @@ namespace App.MVVM.View
             stackPanel.Children.Clear();
         }
 
+        public async void rechargePage()
+        {
+            users = await provider.GetUsers();
+            foreach (User user in users)
+            {
+                comboBoxId.Items.Add(user._id);
+
+            }
+
+            deleteComponents();
+            generateUserGrid();
+
+        }
+
         private void comboBoxId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Boolean admin;
@@ -325,14 +339,14 @@ namespace App.MVVM.View
                 }
             }
 
-            if (postUpdate == null)
+            if (userUpdate == null)
             {
-                MessageBox.Show("No se ha seleccionado ningúna publicación");
+                MessageBox.Show("No se ha seleccionado ningún usuario");
             }
             else
             {
                 DataProvider a = new DataProvider();
-                a.updatePost(postUpdate);
+                a.updateUser(userUpdate);
                 rechargePage();
             }
         }
@@ -351,8 +365,7 @@ namespace App.MVVM.View
 
             DataProvider a = new DataProvider();
             a.deleteUser(userDelete);
-            deleteComponents();
-            getterUsers();
+            rechargePage();
 
         }
 
@@ -381,8 +394,7 @@ namespace App.MVVM.View
             webText.Text = "";
             comboBoxId.ItemsSource = null;
 
-            deleteComponents();
-            getterUsers();
+            rechargePage();
         }
     }
 }

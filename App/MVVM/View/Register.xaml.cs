@@ -62,7 +62,6 @@ namespace App
                     UserProvider.userLogged = usuario;
 
                     MainWindow main = new MainWindow();
-                    main.Administration.Visibility = Visibility.Hidden;
                     this.Close();
                     main.Show();
 

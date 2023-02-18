@@ -89,7 +89,9 @@ namespace App.MVVM.View
                 postGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                 postGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                 postGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+                postGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
                 postGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto) });
+                postGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
                 postGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
                 TextBlock titleText = new TextBlock
@@ -115,11 +117,11 @@ namespace App.MVVM.View
                 {
                     Text = post.description,
                     TextWrapping = TextWrapping.Wrap,
-                    Margin = new Thickness(0,0,100,0),
+                    Margin = new Thickness(10,0,50,0),
                 };
                 Grid.SetRow(descriptionText, 1);
-
                 Grid.SetColumn(descriptionText, 1);
+                Grid.SetColumnSpan(descriptionText,2);
                 postGrid.Children.Add(descriptionText);
 
                 StackPanel creatorAndDate = new StackPanel
@@ -138,6 +140,48 @@ namespace App.MVVM.View
                 Grid.SetRow(creatorAndDate, 2);
                 Grid.SetColumn(creatorAndDate, 0);
                 postGrid.Children.Add(creatorAndDate);
+
+                Button commentButton = new Button();
+                commentButton.Name = "commentButton";
+                commentButton.HorizontalAlignment = HorizontalAlignment.Right;
+                commentButton.BorderThickness = new Thickness(0);
+                commentButton.Content = "Ver comentarios";
+                commentButton.Foreground = Brushes.White;
+                commentButton.FontSize = 10;
+                commentButton.FontFamily = new FontFamily("Montserrat");
+                commentButton.Cursor = Cursors.Hand;
+                commentButton.Margin = new Thickness(0, 0, 20, 0);
+                commentButton.Click += commentButton_Click;
+
+                Style buttonStyle = new Style(typeof(Button));
+                buttonStyle.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(53, 143, 128))));
+                Trigger mouseOverTrigger = new Trigger() { Property = Button.IsMouseOverProperty, Value = true };
+                mouseOverTrigger.Setters.Add(new Setter(Button.BackgroundProperty, new SolidColorBrush(Color.FromRgb(39, 139, 239))));
+                buttonStyle.Triggers.Add(mouseOverTrigger);
+                commentButton.Style = buttonStyle;
+
+                ControlTemplate buttonTemplate = new ControlTemplate(typeof(Button));
+                FrameworkElementFactory borderFactory = new FrameworkElementFactory(typeof(Border));
+                borderFactory.SetValue(Border.WidthProperty, 90.0);
+                borderFactory.SetValue(Border.HeightProperty, 20.0);
+                borderFactory.SetValue(Border.CornerRadiusProperty, new CornerRadius(10));
+                borderFactory.SetValue(Border.BackgroundProperty, new TemplateBindingExtension(Button.BackgroundProperty));
+                FrameworkElementFactory contentPresenterFactory = new FrameworkElementFactory(typeof(ContentPresenter));
+                contentPresenterFactory.SetValue(ContentPresenter.VerticalAlignmentProperty, VerticalAlignment.Center);
+                contentPresenterFactory.SetValue(ContentPresenter.HorizontalAlignmentProperty, HorizontalAlignment.Center);
+                borderFactory.AppendChild(contentPresenterFactory);
+                buttonTemplate.VisualTree = borderFactory;
+                commentButton.Template = buttonTemplate;
+
+                void commentButton_Click(object sender, RoutedEventArgs e)
+                {
+
+                }
+
+
+                Grid.SetRow(commentButton,3);
+                Grid.SetColumn(commentButton, 3);
+                postGrid.Children.Add(commentButton);
 
                 postGrid.MouseLeftButtonDown += new MouseButtonEventHandler(postgrid_MouseDown);
 
@@ -163,6 +207,8 @@ namespace App.MVVM.View
         {
             stackPanel.Children.Clear();
         }
+
+
 
         public async void rechargePage()
         {
