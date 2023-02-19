@@ -17,9 +17,55 @@
     </Window.Resources>
 
     <Border Background="#99E2B4"
-            CornerRadius="20">
+            CornerRadius="0,0,20,20">
         <Grid>
-            <ScrollViewer Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Rectangle Fill="#248277"/>
+            <Button x:Name="Close" Content="X"
+                        Grid.Row="0"
+                        Foreground="White"
+                        FontSize="14"
+                        HorizontalAlignment="Right"
+                        FontWeight="Medium"
+                        Margin="10,2,10,0" 
+                        Click="Button_Click" 
+                        Cursor="Hand">
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Fonts/#Ubuntu-Regular"/>
+                        <Setter Property="Background" Value="#67B99A"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#78C6A3"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="35" Height="20"
+                                    CornerRadius="9"
+                                    Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"
+                                                  />
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+
+            <ScrollViewer Grid.Row="1">
                 <StackPanel Orientation="Vertical" x:Name="stackPanel">
 
                     

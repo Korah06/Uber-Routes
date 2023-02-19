@@ -32,12 +32,16 @@ namespace App.MVVM.View
         {
             users = await provider.GetUsers();
 
-            foreach(User user in users)
+            if(users != null)
             {
-                comboBoxId.Items.Add(user._id);
-            }
+                foreach (User user in users)
+                {
+                    comboBoxId.Items.Add(user._id);
+                }
 
-            generateUserGrid();
+                generateUserGrid();
+            }
+            
 
         }
 
@@ -380,13 +384,10 @@ namespace App.MVVM.View
                 if (user._id == comboBoxId.SelectedValue)
                 {
                     userSend = user;
+                    if(userSend != null)
+                    provider.UploadUserImg(userSend);
                 }
             }
-
-
-
-            DataProvider a = new DataProvider();
-            a.UploadUserImg(userSend);
 
             nameText.Text = "";
             surnameText.Text = "";

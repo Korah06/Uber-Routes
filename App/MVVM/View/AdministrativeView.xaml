@@ -13,10 +13,6 @@
                 <RowDefinition Height="0.12*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.3*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
 
             <StackPanel Background="#036666" Grid.ColumnSpan="2" Orientation="Horizontal">
@@ -41,18 +37,10 @@
 
             </StackPanel>
 
-            <Border Grid.Row="1" 
-                    Grid.Column="1"
-                    CornerRadius="0,0,20,0" 
-                    BorderBrush="#99E2B4" 
-                    BorderThickness="2" 
-                    Background="#99E2B4">
-                <ContentControl x:Name="content" 
-                            Content="{Binding CurrentView}"
-                            Panel.ZIndex="-1" Grid.ColumnSpan="2"/>
-            </Border>
-            
-
+            <ContentControl 
+                    Grid.Row="1" x:Name="content" 
+                    Content="{Binding CurrentView}"
+                    Panel.ZIndex="-1"/>
         </Grid>
             
     </Grid>

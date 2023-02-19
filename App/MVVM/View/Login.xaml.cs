@@ -32,11 +32,7 @@ namespace App.MVVM.View
 
         public Login()
         {
-            
             InitializeComponent();
-            txtUser.Text = "admin";
-            txtPassword.Password = "admin";
-            /*TODO*/
         }
 
 

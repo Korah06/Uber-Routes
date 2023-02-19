@@ -33,12 +33,16 @@ namespace App.MVVM.View
         {
             posts = await ejemplo.GetPosts();
 
-            foreach (Post post in posts)
+            if(posts != null)
             {
-                comboBoxId.Items.Add(post._id);
+                foreach (Post post in posts)
+                {
+                    comboBoxId.Items.Add(post._id);
 
+                    makePageGrid();
+                }
             }
-            makePageGrid();
+            
 
 
         }
@@ -175,7 +179,7 @@ namespace App.MVVM.View
 
                 void commentButton_Click(object sender, RoutedEventArgs e)
                 {
-                    CommentsView commentsView = new CommentsView();
+                    CommentsView commentsView = new CommentsView(post._id);
                     commentsView.Show();
                 }
 
@@ -255,11 +259,8 @@ namespace App.MVVM.View
                     postSend = post;
                 }
             }
-
-            
-
-            DataProvider a = new DataProvider();
-            a.UploadPostImg(postSend);
+            MessageBox.Show(postSend.name);
+            ejemplo.UploadPostImg(postSend);
 
             rechargePage();
             

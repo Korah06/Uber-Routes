@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using App.MVVM.Model;
 using App.Core;
+using App.MVVM.View;
+using Login = App.MVVM.View.Login;
 
 namespace App
 {
@@ -23,7 +25,9 @@ namespace App
     public partial class Register : Window
     {
         DataProvider ejemplo = new DataProvider();
-        string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+        string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$";
+        string usernamePattern = @"^[a-zA-Z0-9]{3,}$";
+        string passwordPattern = "^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9._-]{6,}$";
         string[] emptyArray = new string[0];
         public Register()
         {
@@ -40,45 +44,52 @@ namespace App
             }
             else
             {
-                if (Regex.IsMatch(txtEmail.Text, pattern))
+                if (Regex.IsMatch(txtUser.Text,usernamePattern))
                 {
-                    User usuario = new User()
+                    if (Regex.IsMatch(txtPassword.Password,passwordPattern))
                     {
-                        _id = txtUser.Text,
-                        name = txtName.Text,
-                        surname = txtSurname.Text,
-                        password = txtPassword.Password,
-                        following = new List<string>(),
-                        followers = new List<string>(),
-                        email = txtEmail.Text,
-                        picture = "example-user.png",
-                        register = "example",
-                        web = "no Web",
-                        admin = true,
+                        if (Regex.IsMatch(txtEmail.Text, emailPattern))
+                        {
+                            User usuario = new User()
+                            {
+                                _id = txtUser.Text,
+                                name = txtName.Text,
+                                surname = txtSurname.Text,
+                                password = txtPassword.Password,
+                                following = new List<string>(),
+                                followers = new List<string>(),
+                                email = txtEmail.Text,
+                                picture = "example-user.png",
+                                register = "example",
+                                web = "no Web",
+                                admin = true,
 
-                    };
+                            };
 
-                    UserProvider.token = await ejemplo.Register(usuario);
-                    UserProvider.userLogged = usuario;
+                            UserProvider.token = await ejemplo.Register(usuario);
+                            UserProvider.userLogged = usuario;
 
-                    MainWindow main = new MainWindow();
-                    this.Close();
-                    main.Show();
+                            MainWindow main = new MainWindow();
+                            this.Close();
+                            main.Show();
 
 
+                        }
+                        else
+                        {
+                            MessageBox.Show("La dirección de correo electrónico no es válida");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("La contraseña debe de tener al menos una mayuscula, un número y debe ser de minimo 6 caracteres");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("La dirección de correo electrónico no es válida");
-
-
-
+                    MessageBox.Show("El nombre de usuario debe de ser alfanumerico y tener minimo 3 caracteres");
                 }
-
-
             }
-
-            
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
@@ -95,6 +106,14 @@ namespace App
         {
             //Cerrar Aplicacion
             Application.Current.Shutdown();
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+
+            login.Show();
+            this.Close();
         }
     }
 }

@@ -115,6 +115,7 @@ namespace App.Core
             try
             {
                 client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
                 string responseBody = await client.GetStringAsync("http://localhost:9999/posts");
                 PostsResponse result = JsonConvert.DeserializeObject<PostsResponse>(responseBody);
 
@@ -135,6 +136,7 @@ namespace App.Core
             try
             {
                 client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
                 string responseBody = await client.GetStringAsync("http://localhost:9999/users/");
                 UserResponse result = JsonConvert.DeserializeObject<UserResponse>(responseBody);
 
@@ -156,7 +158,8 @@ namespace App.Core
 
                 string direccion = "http://localhost:9999/posts/deleteimg/"+post._id;
 
-                var client = new HttpClient();
+                client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
 
                 HttpContent content = null;
 
@@ -177,7 +180,8 @@ namespace App.Core
 
                 string direccion = "http://localhost:9999/users/deleteimg/" + user._id;
 
-                var client = new HttpClient();
+                client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
 
                 HttpContent content = null;
 
@@ -194,6 +198,8 @@ namespace App.Core
         {
             try
             {
+                client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
                 var httpResponse = await client.DeleteAsync("http://localhost:9999/users/"+user._id);
                 if (httpResponse.IsSuccessStatusCode)
                 {
@@ -212,6 +218,8 @@ namespace App.Core
         {
             try
             {
+                client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
                 var httpResponse = await client.DeleteAsync("http://localhost:9999/posts/" + post._id);
                 if (httpResponse.IsSuccessStatusCode)
                 {
@@ -233,6 +241,8 @@ namespace App.Core
             {
 
                 client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
+
                 var serialized = System.Text.Json.JsonSerializer.Serialize<Post>(post);
 
 
@@ -261,6 +271,8 @@ namespace App.Core
             {
 
                 client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
+
                 var serialized = System.Text.Json.JsonSerializer.Serialize<User>(user);
 
                 HttpContent content = new StringContent(serialized, System.Text.Encoding.UTF8, "application/JSON");
@@ -286,6 +298,8 @@ namespace App.Core
             try
             {
                 client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
+
 
                 Post data = new Post()
                 {
@@ -317,6 +331,56 @@ namespace App.Core
             {
                 MessageBox.Show(e + "");
                 return null;
+            }
+        }
+
+        public async Task<List<Coment>> getComments(string post)
+        {
+            try
+            {
+                client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
+
+                var response = await client.GetAsync("http://localhost:9999/comments/" + post);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseBody = await response.Content.ReadAsStringAsync();
+                    ComentResponse result = JsonConvert.DeserializeObject<ComentResponse>(responseBody);
+                    return result.data;
+                }
+                else
+                {
+                    MessageBox.Show("Ha habido algún fallo de conexión");
+                    return null;
+                }
+
+            }
+            catch(Exception e) 
+            {
+                Console.WriteLine(e);
+                MessageBox.Show("Ha habido algún problema interno de la aplicación");
+                return null;
+            }
+        }
+
+        public async void deleteComment(string comment)
+        {
+            try
+            {
+                client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserProvider.token);
+                var httpResponse = await client.DeleteAsync("http://localhost:9999/comments/adm/" + comment);
+                if (httpResponse.IsSuccessStatusCode)
+                {
+
+                    var result = await httpResponse.Content.ReadAsStringAsync();
+
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e + "");
             }
         }
 

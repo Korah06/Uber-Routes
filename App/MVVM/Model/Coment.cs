@@ -8,7 +8,7 @@ namespace App.MVVM.Model
 {
     public class Coment
     {
-        public int _id { get; set; }
+        public string _id { get; set; }
         public string description { get; set; }
         public string user { get; set; }
         public string post { get; set; }
