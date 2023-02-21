@@ -18,16 +18,9 @@
                     Margin="60">
             <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
 
-                <Image Source="../../Images/UberRoutes.png" Width="100"/>
+                <Image Source="../../Images/logo_cut.png" Width="50"/>
 
-                <TextBlock Text="Uber Routes"
-                       Foreground="White"
-                       FontSize="20"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Bottom"
-                       FontWeight="Medium"
-                       FontFamily="Fonts/#Ubuntu-Regular"
-                           Margin="0,0,0,5"/>
+                <Image Width="140" Height="40" Margin="5,0,0,0" Source="../../Images/titulo_transparent.png"/>
                 
             </StackPanel>
 

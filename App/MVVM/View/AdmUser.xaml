@@ -111,7 +111,7 @@
                         <Button x:Name="btnImage"
                         HorizontalAlignment="Left"
                         BorderThickness="0"
-                        Content="Añadir imagen"
+                        Content="Modificar imagen"
                         Foreground="White"
                         FontSize="10"
                         FontFamily="Montserrat"

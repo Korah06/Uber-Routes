@@ -39,8 +39,9 @@ namespace App.MVVM.View
                 {
                     comboBoxId.Items.Add(post._id);
 
-                    makePageGrid();
+                    
                 }
+                makePageGrid();
             }
             
 
@@ -257,10 +258,10 @@ namespace App.MVVM.View
                 if (post._id == comboBoxId.SelectedValue)
                 {
                     postSend = post;
+                    ejemplo.UploadPostImg(postSend);
                 }
             }
-            MessageBox.Show(postSend.name);
-            ejemplo.UploadPostImg(postSend);
+            
 
             rechargePage();
             

@@ -20,6 +20,18 @@
     <Border Background="#036666"
             CornerRadius="20">
         <Grid>
+
+            <Grid.Resources>
+                <PathGeometry x:Key="clipPath">
+                    <PathFigure StartPoint="0,100">
+                        <ArcSegment Size="100,100" SweepDirection="Clockwise" Point="100,100" />
+                        <ArcSegment Size="100,100" SweepDirection="Clockwise" Point="100,0" />
+                        <ArcSegment Size="100,100" SweepDirection="Clockwise" Point="0,0" />
+                        <ArcSegment Size="100,100" SweepDirection="Clockwise" Point="0,100" />
+                    </PathFigure>
+                </PathGeometry>
+            </Grid.Resources>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="879*"/>
                 <ColumnDefinition Width="401*"/>
@@ -37,15 +49,11 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Background="#036666" Orientation="Horizontal">
-
-                    <Image Source="./Images/UberRoutes.png" Width="50"/>
-
-                    <TextBlock Text="UberRoutes"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"
-                       Foreground="White"
-                       FontSize="20"
-                       Margin="20,0,0,0"/>
+                    
+                        <Image Margin="5,0,0,0"  Source="./Images/logo_cut.png" Width="50"/>
+                    
+                    
+                    <Image Width="140" Height="40" Margin="5,0,0,0" Source="./Images/titulo_transparent.png"/>
                 </StackPanel>
 
 
