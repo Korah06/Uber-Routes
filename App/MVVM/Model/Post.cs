@@ -16,6 +16,7 @@ namespace App.MVVM.Model
         public string distance { get; set; }
         public string difficulty { get; set; }
         public string duration { get; set; }
+        public double[][] coordinaates { get; set; }
         public string image { get; set; }
         public string privacy { get; set; }
         public string enterprise { get; set; }

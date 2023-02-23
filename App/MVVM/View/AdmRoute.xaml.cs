@@ -54,6 +54,10 @@ namespace App.MVVM.View
         {
             getterPosts();
             InitializeComponent();
+            comboBoxCat.Items.Add("Ciclismo");
+            comboBoxCat.Items.Add("Senderismo");
+            comboBoxCat.Items.Add("Kayac");
+            comboBoxCat.Items.Add("Natacion");
         }
 
         private void makePageGrid()
@@ -239,7 +243,8 @@ namespace App.MVVM.View
             {
                 if(post._id == comboBoxId.SelectedValue)
                 {
-                    catText.Text = post.category;
+                    comboBoxCat.SelectedItem = post.category;
+                    //catText.Text = post.category;
                     distText.Text = post.distance;
                     nameText.Text = post.name;
                     diffText.Text = post.difficulty;
@@ -264,8 +269,9 @@ namespace App.MVVM.View
             
 
             rechargePage();
-            
-            catText.Text = "";
+
+            comboBoxCat.SelectedIndex = -1;
+            //catText.Text = "";
             distText.Text = "";
             nameText.Text = "";
             diffText.Text = "";
@@ -283,7 +289,8 @@ namespace App.MVVM.View
                 {
                     postUpdate = post;
                     postUpdate.distance = distText.Text;
-                    postUpdate.category = catText.Text;
+                    postUpdate.category = comboBoxCat.Text;
+                    //postUpdate.category = catText.Text;
                     postUpdate.name = nameText.Text;
                     postUpdate.difficulty = diffText.Text;
                 }

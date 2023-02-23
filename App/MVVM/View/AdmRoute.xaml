@@ -78,7 +78,7 @@
                        HorizontalAlignment="Left"
                        Foreground="White"
                        FontSize="13"/>
-                        <TextBox x:Name="catText"/>
+                        <ComboBox x:Name="comboBoxCat"></ComboBox>
                     </StackPanel>
 
                     <StackPanel  Grid.Row="2" Margin="0,0,10,0">
