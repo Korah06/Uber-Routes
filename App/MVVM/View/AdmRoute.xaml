@@ -96,7 +96,7 @@
                        HorizontalAlignment="Left"
                        Foreground="White"
                        FontSize="13"/>
-                        <TextBox x:Name="diffText"/>
+                        <ComboBox x:Name="comboBoxDiff"></ComboBox>
                     </StackPanel>
 
                     <StackPanel Grid.Row="4" Margin="0,0,10,0">

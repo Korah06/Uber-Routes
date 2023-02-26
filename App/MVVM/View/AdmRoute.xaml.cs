@@ -54,6 +54,9 @@ namespace App.MVVM.View
         {
             getterPosts();
             InitializeComponent();
+            comboBoxDiff.Items.Add("Facil");
+            comboBoxDiff.Items.Add("Moderado");
+            comboBoxDiff.Items.Add("Dificil");
             comboBoxCat.Items.Add("Ciclismo");
             comboBoxCat.Items.Add("Senderismo");
             comboBoxCat.Items.Add("Kayac");
@@ -247,7 +250,7 @@ namespace App.MVVM.View
                     //catText.Text = post.category;
                     distText.Text = post.distance;
                     nameText.Text = post.name;
-                    diffText.Text = post.difficulty;
+                    comboBoxDiff.SelectedItem = post.difficulty;
                     break;
                 }
             }
@@ -274,7 +277,7 @@ namespace App.MVVM.View
             //catText.Text = "";
             distText.Text = "";
             nameText.Text = "";
-            diffText.Text = "";
+            comboBoxDiff.SelectedIndex = -1;
 
 
         }
@@ -290,9 +293,8 @@ namespace App.MVVM.View
                     postUpdate = post;
                     postUpdate.distance = distText.Text;
                     postUpdate.category = comboBoxCat.Text;
-                    //postUpdate.category = catText.Text;
                     postUpdate.name = nameText.Text;
-                    postUpdate.difficulty = diffText.Text;
+                    postUpdate.difficulty = comboBoxDiff.Text;
                 }
             }
 
